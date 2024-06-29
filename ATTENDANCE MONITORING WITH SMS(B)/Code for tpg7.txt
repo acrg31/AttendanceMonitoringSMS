@@ -1,0 +1,176 @@
+string colname = dgG7.Columns[e.ColumnIndex].Name;
+Form formodal = new Form();
+MessageBox.Show(colname);
+if (colname == "dataGridViewImageColumn7")
+{
+        FormStudentInfo modal = new FormStudentInfo();
+        DataGridViewRow row = dgG7.Rows[e.RowIndex];
+    MessageBox.Show(row.ToString());
+        formodal.FormBorderStyle = FormBorderStyle.None;
+        formodal.Opacity = 0.5;
+        formodal.BackColor = Color.Black;
+        formodal.WindowState = FormWindowState.Maximized;
+
+        formodal.Location = Location;
+        formodal.ShowInTaskbar = false;
+        formodal.Show();
+        modal.Owner = formodal;
+        string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        FormStudentInfo ViewForm = new FormStudentInfo(qrcode);
+        ViewForm.ShowDialog();
+    
+}
+else if (colname == "Column8")
+{
+    try
+    {
+        FormStudentEdit modal = new FormStudentEdit();
+        DataGridViewRow row = dgG7.Rows[e.RowIndex];
+
+        formodal.StartPosition = FormStartPosition.Manual;
+        formodal.FormBorderStyle = FormBorderStyle.None;
+        formodal.Opacity = 0.5;
+        formodal.BackColor = Color.Black;
+        formodal.WindowState = FormWindowState.Maximized;
+
+        formodal.Location = Location;
+        formodal.ShowInTaskbar = false;
+        formodal.Show();
+        modal.Owner = formodal;
+        string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        FormStudentEdit ViewFormEdit = new FormStudentEdit(qrcode);
+        ViewFormEdit.ShowDialog();
+    }
+    catch (Exception)
+    {
+    }
+    finally
+    {
+        formodal.Dispose();
+    }
+}
+
+else if (colname == "Column9")
+{
+    try
+    {
+        DataGridViewRow row = dgG7.Rows[e.RowIndex];
+        string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        DialogResult res = MessageBox.Show("Are you sure you want to Delete?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+        if (res == DialogResult.OK)
+        {
+            string connection = "server=localhost;user id=root;password=;database=lubang_db;SslMode=none";
+            string query = "DELETE FROM table_student WHERE QRCODE='" + qrcode + "'";
+            MySqlConnection conn = new MySqlConnection(connection);
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader dr;
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            //MessageBox.Show("Data has been succesfully deleted!!");
+            conn.Close();
+        }
+        if (res == DialogResult.Cancel)
+        {
+            return;
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(ex.Message);
+    }
+}
+else if (colname == "Column10")
+{
+    try
+    {
+        //FormStudentQrcode modal = new FormStudentQrcode();
+        DataGridViewRow row = dgG7.Rows[e.RowIndex];
+
+        //  formodal.StartPosition = FormStartPosition.Manual;
+        // formodal.FormBorderStyle = FormBorderStyle.None;
+        // formodal.Opacity = 0.5;
+        //  formodal.BackColor = Color.Black;
+        // formodal.WindowState = FormWindowState.Maximized;
+
+        //  formodal.Location = Location;
+        //  formodal.ShowInTaskbar = false;
+        // formodal.Show();
+        // modal.Owner = formodal;
+        //  string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        //  string fullname = Convert.ToString(row.Cells["Column2"].Value.ToString());
+
+        //  FormStudentQrcode ViewQrcode = new FormStudentQrcode(qrcode, fullname);
+        //ViewQrcode.ShowDialog();
+
+        ///para sa id
+
+        //FormStudentEdit modal = new FormStudentEdit();
+
+
+        //formodal.StartPosition = FormStartPosition.Manual;
+        // formodal.FormBorderStyle = FormBorderStyle.None;
+        // formodal.Opacity = 0.5;
+        //  formodal.BackColor = Color.Black;
+        // formodal.WindowState = FormWindowState.Maximized;
+
+        // formodal.Location = Location;
+        // formodal.ShowInTaskbar = false;
+        // formodal.Show();
+        // modal.Owner = formodal;
+        string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        FormIDPreview ViewIDcard = new FormIDPreview(qrcode);
+        ViewIDcard.ShowDialog();
+
+
+    }
+    catch (Exception)
+    {
+    }
+    finally
+    {
+        formodal.Dispose();
+    }
+}
+else if (colname == "Column5")
+{
+    try
+    {
+
+        DataGridViewRow row = dgG9.Rows[e.RowIndex];
+        string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        FormStudProf Profile = new FormStudProf(qrcode);
+        Profile.ShowDialog();
+
+    }
+    catch (Exception)
+    {
+    }
+    finally
+    {
+        formodal.Dispose();
+    }
+}
+else if (colname == "Column11")
+{
+    try
+    {
+
+        DataGridViewRow row = dgG9.Rows[e.RowIndex];
+        string qrcode = Convert.ToString(row.Cells["Column1"].Value.ToString());
+        string fullname = Convert.ToString(row.Cells["Column2"].Value.ToString());
+        FormStudentQrcode ViewQrcode = new FormStudentQrcode(qrcode, fullname);
+        ViewQrcode.ShowDialog();
+
+    }
+    catch (Exception)
+    {
+    }
+    finally
+    {
+        formodal.Dispose();
+    }
+}
+else
+{
+    MessageBox.Show("1");
+}

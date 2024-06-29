@@ -1,0 +1,41 @@
+DATABASE SETUP
+
+1.Download the zip file "LUBANG INTEGRATED SCHOOL" and extract.
+2.Download and install XAMPP
+3.Run the XAMPP control panel and start MySQL and Apache
+4.Open the browser and go to http://localhost/phpmyadmin/ to create the database
+5.Click the new to create a database.
+6.Name the database "lubang_db"
+7.Click import to import the sql file.
+8.Click choose file and select the file that can be found inside the "LUBANG INTEGRATED SCHOOL" folder
+
+SYSTEM FUNCTION
+
+NOTE: 
+
+Credentials: 
+user: admin  password: admin
+
+Press F1: To Login and access admin dashboard.
+
+SETUP FOR STUDENT PROFILE IMAGE:
+
+1.Create folder "QRcodeAttendance" for profile directory in local: D:\QRcodeAttendance\Profile\
+2.Create subfolder "StudentQrcode" for student QRcode id in local D:\QRcodeAttendance\StudentQrcode\
+
+Thank you
+
+#SourceCodePh
+
+
+
+Requirements:
+
+1.XAMPP (latest version for database server)
+-Link: https://www.apachefriends.org/download.html
+
+2.qrcode Reader or Scanner
+-
+3.PDLTHomeWiFi Modem(with usb port for SMS) 
+
+Thanks
